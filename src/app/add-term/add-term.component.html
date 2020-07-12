@@ -1,0 +1,11 @@
+<div class="container">
+    <label >Term
+        <input #term >
+    </label>
+    <div>
+        <label >Description
+            <input #desc >
+        </label>
+        <button (click)="add(term.value, desc.value,null)">Add</button>
+    </div>
+</div>

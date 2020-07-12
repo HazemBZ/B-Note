@@ -1,0 +1,22 @@
+
+<div>
+    <label for="">search</label>
+    <input #searchIn id="searchIn" (input)="search(searchIn.value)">
+    
+</div>
+
+    <div >
+        <div  *ngFor="let term of terms  "  class="row"  class="card" >
+            <div class="card-body">
+                <h4 class="card-title">{{term.term | uppercase}}</h4>
+                <div class="card-text">{{term.desc}}</div>
+                <a href="#" class="btn btn-primary">More</a>
+                <ul>
+                    <li *ngFor="let tag of term.tags">
+                        {{tag}}
+                    </li>
+                </ul>
+                <button (click)="delete(term._id, searchIn.value)">delete</button>
+            </div>
+            
+        </div>
