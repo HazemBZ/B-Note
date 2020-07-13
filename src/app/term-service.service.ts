@@ -18,6 +18,11 @@ export class TermServiceService {
 
   constructor(private http:HttpClient) { }
 
+  getTerm(id:string):Observable<Term> {
+    const url = `http://localhost:8000/term?id=${id}`;
+    return this.http.get<Term>(url, this.httpOptions);
+  }
+  
   getTerms():Observable<any[]> {
     // to do search accepts matches for term 
     // for now other end limits response data
@@ -28,7 +33,7 @@ export class TermServiceService {
     term = term.trim();
     if (!term) return of([]);
     
-    const url = `http://localhost:8000/term?term=${term}`;
+    const url = `http://localhost:8000/terms?term=${term}`;
     return this.http.get<Term[]>(url).pipe(
       tap(_=>console.log(JSON.stringify(_)))
     );
@@ -47,4 +52,13 @@ export class TermServiceService {
       tap(_=>console.log(JSON.stringify(_)))
     );
   }
+  
+  updateTerm(term:Term):Observable<any> {
+    const url = ""
+    return this.http.patch<any>("http://localhost:8000/term/patch", term,this.httpOptions).pipe(
+      tap(_=> console.log("sending " + JSON.stringify(_)))
+    );
+  }
+
+
 }

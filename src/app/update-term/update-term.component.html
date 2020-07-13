@@ -1,0 +1,13 @@
+
+<div *ngIf="term" class="content">
+    <label >Term
+        <!-- {{(term|async).term}} -->
+        <input [(ngModel)]="term.term">
+    </label>
+    <div>
+        <label >Description
+            <input [(ngModel)]="term.desc">
+        </label>
+        <button (click)="update(term)">update</button>
+    </div>
+</div>

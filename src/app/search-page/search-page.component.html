@@ -6,7 +6,7 @@
 </div>
 
     <div >
-        <div  *ngFor="let term of terms  "  class="row"  class="card" >
+        <div  *ngFor="let term of terms"  class="row"  class="card" >
             <div class="card-body">
                 <h4 class="card-title">{{term.term | uppercase}}</h4>
                 <div class="card-text">{{term.desc}}</div>
@@ -16,7 +16,10 @@
                         {{tag}}
                     </li>
                 </ul>
-                <button (click)="delete(term._id, searchIn.value)">delete</button>
+                <a routerLink="/update/{{term._id}}">
+                    <button>update</button>
+                </a>
+                <button (click)="delete(term._id, term.term)">delete</button>
             </div>
             
         </div>
