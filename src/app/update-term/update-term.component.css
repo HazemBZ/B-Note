@@ -11,9 +11,9 @@
 }
 
 div.title {
-    width: 80%;
+    width: 90%;
     min-width: 800px;
-    margin: 0 5%;
+    margin: 0 0;
     margin-top: 0px;
     margin-top: 50px;
     text-align: center;
@@ -21,9 +21,9 @@ div.title {
 }
 
 .content-wrapper {
-    width: 70%;
+    width: 75%;
     min-width: 600px;
-    margin: 0 10%;
+    margin: 0 5%;
     margin-top: 100px;
     display: flex;
     
@@ -64,13 +64,13 @@ textarea {
 
 
 
-div.title {
+/* div.title {
     width: 100%;
     margin: 0 auto;
     margin-top: 50px;
     text-align: center;
     padding: 0;
-}
+} */
 
 h1.title {
     color: black;
@@ -83,6 +83,7 @@ h1.title {
     font-family: 'Roboto' Arial, sans-serif;
     color: black;
     font-weight: 700;
+    font-size:1.5em;
 }
 
 /* #container { 
@@ -105,6 +106,7 @@ button, textarea, input {
 button {
     display: block;
 }
+
 
 .save-control {
     width: 50px;

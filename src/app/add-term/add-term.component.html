@@ -1,11 +1,36 @@
-<div class="container">
-    <label >Term
-        <input #term >
-    </label>
-    <div>
-        <label >Description
-            <input #desc >
-        </label>
-        <button (click)="add(term.value, desc.value,null)">Add</button>
-    </div>
+<div class="wrapper">
+    <section class="section">
+
+        <div class="container title">
+            <h1 class="title">Add Page</h1>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="controls">
+                <button class="add-control" (click)="add(term.value, desc.value,null)">
+                    <fa-icon [icon]="faSave"></fa-icon>
+                </button>
+            </div>
+            <div class="content-container">
+
+                <div class="field">
+                    <label >
+                        <h3 class="sub-title">Term</h3> 
+                    </label>
+                    <div>
+                        <input #term >
+                    </div>
+                </div>
+                <div>
+                    <label >
+                        <h3 class="sub-title">Description</h3>
+                    </label>
+                    <div class="field">
+                        <textarea #desc ></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
 </div>
