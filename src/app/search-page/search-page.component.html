@@ -1,25 +1,50 @@
+<div class="wrapper">
 
-<div>
-    <label for="">search</label>
-    <input #searchIn id="searchIn" (input)="search(searchIn.value)">
-    
-</div>
+    <div class="cont">
+        
 
-    <div >
-        <div  *ngFor="let term of terms"  class="row"  class="card" >
-            <div class="card-body">
-                <h4 class="card-title">{{term.term | uppercase}}</h4>
-                <div class="card-text">{{term.desc}}</div>
-                <a href="#" class="btn btn-primary">More</a>
-                <ul>
-                    <li *ngFor="let tag of term.tags">
-                        {{tag}}
-                    </li>
-                </ul>
-                <a routerLink="/update/{{term._id}}">
-                    <button>update</button>
-                </a>
-                <button (click)="delete(term._id, term.term)">delete</button>
+        <section class="section content">
+            <div class="container title">
+                <h1 class="title">Search Page</h1>
+            </div>   
+            <div class="container">
+                <div class="search-field">
+                    <div class=""> 
+                        <input type="search" class="" #searchIn id="searchIn" (input)="search(searchIn.value)">
+                    </div>  
+                </div>
+                
+                <div *ngFor="let term of terms"  class="card-wrapper">
+                    <div class="controls">
+                        <a routerLink="/update/{{term._id}}">
+                                <button  class="add-control" >
+                                    <span class="">
+                                        <fa-icon [icon]="faPen"></fa-icon>
+                                    </span>
+                                </button>
+                        </a>
+                        <button class="remove-control" (click)="delete(term._id, term.term)">
+                            <span class="icon is-small">
+                                <fa-icon [icon]="faTrash"></fa-icon>
+                            </span>
+                        </button>
+                    </div>
+                    <div  class="card" >
+
+                            <div class="card-cont">
+                                <h4 class="term">{{term.term | uppercase}}</h4>
+                                <div class="card-text">{{term.desc}}</div>
+                                <a href="#" class="btn btn-primary">More</a>
+                                <ul>
+                                    <li *ngFor="let tag of term.tags">
+                                        {{tag}}
+                                    </li>
+                                </ul>
+                            </div>
+                    </div>
+                </div>
             </div>
-            
-        </div>
+        </section>
+        
+    </div>
+</div>

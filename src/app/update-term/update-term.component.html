@@ -1,13 +1,33 @@
+<div class="wrapper" >
+    <section class="section cont">
+        <div class="title container">
 
-<div *ngIf="term" class="content">
-    <label >Term
-        <!-- {{(term|async).term}} -->
-        <input [(ngModel)]="term.term">
-    </label>
-    <div>
-        <label >Description
-            <input [(ngModel)]="term.desc">
-        </label>
-        <button (click)="update(term)">update</button>
-    </div>
+            <h1 class="title">Update Page</h1>
+        </div>
+
+            <div *ngIf="term" class="content-wrapper" id="">
+                <div class="controls">
+                    <button class="save-control" (click)="update(term)">
+                        <fa-icon [icon]="faSave"></fa-icon>
+                    </button>
+                    
+                </div>
+                <div class="content-container">
+
+                    <div class="field">
+                        <label class="label" ><h3 class="sub-title">Term</h3></label>
+                        <!-- {{(term|async).term}} -->
+                        <div class="control">
+                            <input class="" [(ngModel)]="term.term">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label"><h3 class="sub-title">Description</h3></label>
+                        <div class="control">
+                            <textarea class="" [(ngModel)]="term.desc"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
 </div>

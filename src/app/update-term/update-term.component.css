@@ -1,0 +1,128 @@
+/* @import "~bulma/css/bulma.css"; */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.cont {
+
+}
+
+div.title {
+    width: 80%;
+    min-width: 800px;
+    margin: 0 5%;
+    margin-top: 0px;
+    margin-top: 50px;
+    text-align: center;
+    padding: 0;
+}
+
+.content-wrapper {
+    width: 70%;
+    min-width: 600px;
+    margin: 0 10%;
+    margin-top: 100px;
+    display: flex;
+    
+}
+.content-container{
+    border:3px solid black;
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+
+}
+
+.controls {
+    width: 75px;
+    height: 100%;
+}
+
+input, textarea{
+    color:black;
+    font-family: 'Roboto';
+    border:3px solid black;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5px;
+    font-size: 20px;
+}
+
+input:focus, input:hover, textarea:focus, textarea:hover {
+
+    box-shadow: 0px 0px 3px black;
+    box-sizing: border-box;
+}
+
+textarea {
+    min-height: 200px;
+    resize: none;
+}
+
+
+
+div.title {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 50px;
+    text-align: center;
+    padding: 0;
+}
+
+h1.title {
+    color: black;
+    font-family: 'Roboto' Arial, sans-serif;
+    font-size: larger;
+    font-weight: 400;
+}
+
+.sub-title {
+    font-family: 'Roboto' Arial, sans-serif;
+    color: black;
+    font-weight: 700;
+}
+
+/* #container { 
+    width: 500px;
+   
+    margin-top: 00px;
+    margin-bottom: 100px;
+} */
+
+button, textarea, input { 
+    margin-bottom: 5px;
+}
+
+ /* #hero {
+     background-color: turquoise;
+     min-height: 500px;
+ } */
+
+
+button {
+    display: block;
+}
+
+.save-control {
+    width: 50px;
+    height: 50px;
+    border: 2px solid black;
+    position: relative;
+    right: 0;
+    border-radius: 50%;
+    margin: 5px auto;
+    background-color: #25C335;
+}
+
+.save-control:hover {
+    background-color: #1c8626;
+    cursor: pointer;
+}
+
+
+fa-icon {
+    color:black;
+}

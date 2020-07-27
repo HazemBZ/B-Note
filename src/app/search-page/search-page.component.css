@@ -1,0 +1,168 @@
+/* @import "~bulma/css/bulma.css"; */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+/* 
+* {
+    border: 1px dotted green;
+} */
+.wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.cont {
+    height: 100%;
+    width: 70%;
+    padding: 0;
+    margin: 0 0 20% 10%;
+    
+}
+
+.control {
+    width:200px;
+}
+
+.buttons button {
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+
+.section {
+    margin: 0;
+}
+
+
+.section.content {
+    /* background-color: rgba(127, 255, 212, 0); */
+    width: 100%;
+    height: auto;
+}
+
+.content-container {
+    margin: 150px 150px;
+}
+
+div.title{
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 0px;
+    text-align: center;
+   
+    /* padding: 25px; */
+}
+
+h1.title {
+    color: black;
+    font-family: 'Roboto' Arial, sans-serif;
+    font-size: larger;
+    font-weight: 400;
+}
+
+h4.term {
+    color:black;
+}
+
+.search-field {
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+
+
+#searchIn{
+    box-sizing: border-box;
+
+    border:5px solid black ;
+    padding: 20px;
+    margin: 0;
+    width: 100%;
+    height: 50px;
+    border-radius: 50px; /* percentage value does not behave*/
+    font-size: x-large;
+    margin-left: auto;
+    
+}
+
+label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    font-weight: 700;
+    margin-left: 20px;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+
+.card {
+    border: 3px solid black;
+    border-radius: 0;
+    width: 80%;
+    display: inline-block;
+    /* border: 5px dotted red; */
+    
+    overflow: scroll;
+}
+
+
+h4{
+    color: #000000;
+}
+
+
+
+.card-wrapper {
+    height: 200px;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    margin-bottom:50px ;
+}
+
+.controls {
+    width: 75px;
+    height: 100%;
+    margin: 0;
+}
+
+.controls button {
+    display: block;
+}
+
+div.card-cont {
+    padding: 10px;
+}
+
+.add-control, .remove-control {
+    width: 50px;
+    height: 50px;
+    border: 2px solid black;
+    position: relative;
+    right: 0;
+    border-radius: 50%;
+    margin: 5px auto;
+}
+
+.add-control {
+    background-color: #25C335;
+}
+
+.add-control:hover {
+    background-color: #1c8626;
+    cursor: pointer;
+}
+
+.remove-control {
+    background-color: #CC2A2A;
+}
+.remove-control:hover {
+    background-color: #9c2020;
+    cursor: pointer;
+}
+
+fa-icon {
+    color:black;
+}

@@ -3,18 +3,26 @@ import { TermServiceService } from '../term-service.service';
 import { Term } from '../term';
 import { filter, map, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
+import { faCoffee , faTrashAlt ,faSearch, faPen } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-search-page',
   templateUrl: './search-page.component.html',
-  styleUrls: ['./search-page.component.css']
+  styleUrls: ['./search-page.component.css'],
+  host: {'class': 'search tile is-11'}
 })
 export class SearchPageComponent implements OnInit {
   async_terms:Observable<Term[]>;
   terms:Term[];
   private searchTerms = new Subject<string>();
+  faCoffee = faCoffee;
+  faTrash = faTrashAlt;
+  faSearch = faSearch;
+  faPen = faPen;
 
-  constructor(private termService:TermServiceService) { }
+  constructor(private termService:TermServiceService) {
+    
+   }
 
   ngOnInit(): void {
     // this.getTerms();

@@ -5,13 +5,16 @@ import { Term } from '../term';
 import { TermServiceService } from '../term-service.service';
 import { Observable, of } from 'rxjs'
 import { map, tap } from "rxjs/operators";
+import { faSave } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-update-term',
   templateUrl: './update-term.component.html',
-  styleUrls: ['./update-term.component.css']
+  styleUrls: ['./update-term.component.css'],
+  host: {'class': 'update tile is-11'}
 })
 export class UpdateTermComponent implements OnInit {
+  faSave = faSave;
   async_term:Observable<Term>;
   term:Term ;
   constructor(

@@ -1,0 +1,66 @@
+@import "~bulma/css/bulma.css";
+
+/* #search{
+    position: absolute;
+    left: 35%;
+    background-color: rgba(240, 248, 255, 0) ;
+    border-color:  rgba(240, 248, 255, 0) ;
+    background-image: url(~/assets/search.png);
+    width: 64px;
+    height: 64px;
+} */
+
+.container {
+    min-height: 1000px;
+    background-color: #1F2027;
+}
+
+#add {
+    /* width: 100%; */
+    align-content: center;
+}
+
+#search {
+    /* width: 100%; */
+}
+
+
+.add-div{
+    background-color: white;
+}
+
+.add-div:hover{
+    /* background-color: rgba(95, 158, 160, 0.479); */
+}
+
+.search-div{
+    background-color: white;
+}
+
+.search-div:hover{
+    /* background-color: black; */
+}
+
+
+.round {
+    text-align: center;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border:6px solid black;
+    margin: auto;
+    margin-top: 50px;
+    
+    /* background: url(~/assets/search.png) fixed center no-repeat ; */
+}
+
+fa-icon {
+    font-size: 3rem;
+    color :black;
+}
+
+fa-icon:hover{
+    font-size: 3.5rem;
+    position:relative;
+    top:-5px;
+}

@@ -1,4 +1,20 @@
-<nav>
-    <a routerLink="search">Search</a>|
-    <a routerLink="add">Add term</a>|
-  </nav>
+
+  <!-- tile is-child-box  -->
+  <div class="container">
+
+    <div class="search-div round"> 
+      
+      <a routerLink="search" id="search">
+          <div class="btn"><fa-icon [icon]="faSearch"></fa-icon></div>
+      </a>
+    </div>
+    <!-- tile is-child-box  -->
+    <div class="add-div round">
+      
+      <a routerLink="add" id="add" >
+          <div class="btn"><fa-icon [icon]="faPlus"></fa-icon></div>
+      </a>
+    </div>
+    
+    
+  </div>

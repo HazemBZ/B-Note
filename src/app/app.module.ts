@@ -9,6 +9,9 @@ import { SearchPageComponent } from './search-page/search-page.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { AddTermComponent } from './add-term/add-term.component';
 import { UpdateTermComponent } from './update-term/update-term.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {  FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
   declarations: [
@@ -22,9 +25,14 @@ import { UpdateTermComponent } from './update-term/update-term.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule // => ngModel  data binding 
+    FormsModule,
+    FontAwesomeModule // => ngModel  data binding 
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+    constructor(library: FaIconLibrary) {
+      library.addIcons(faCoffee);
+    }
+ }

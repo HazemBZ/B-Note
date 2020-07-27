@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.search {
+    padding: 0px;
+    margin: 0px;
+}
+
+.update {
+    padding: 0px;
+    margin: 0px;
+}
+
+.wrapper {
+    padding: 0;
+    margin: 0;
+    height: inherit;
+}
+
+.root-comp {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
