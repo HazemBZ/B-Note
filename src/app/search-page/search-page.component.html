@@ -42,7 +42,7 @@
                                 <div class="links-container">
                                     <div *ngFor="let link of term.links" class="link-row">
                                         <fa-icon [icon]="faArrowRight"></fa-icon>
-                                        <div class="link"><p><a href="{{link}}" target="_blank">{{link}}</a></p></div>
+                                        <div class="link"><p><a href="{{link.value}}" target="_blank">{{link.alias}}</a></p></div>
                                     </div>
                                 </div>
                             </div>
