@@ -4,4 +4,5 @@ export interface Term {
     term:string
     desc:string
     tags:string[]
+    links:string[]
 }

@@ -166,3 +166,27 @@ div.card-cont {
 fa-icon {
     color:black;
 }
+
+div.tags-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+div.tag {
+    border: 2px solid black;
+    background: rgba(165, 160, 160, 0.37);
+    color: black;
+    border-radius: 25px;
+    margin-right: 5px;
+    font-size: 0.9em;
+}
+
+div.link-row {
+    display: flex;
+}
+
+div.link {
+    margin-left: 10px;
+}

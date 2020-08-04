@@ -34,12 +34,17 @@
                             <div class="card-cont">
                                 <h4 class="term">{{term.term | uppercase}}</h4>
                                 <div class="card-text">{{term.desc}}</div>
-                                <a href="#" class="btn btn-primary">More</a>
-                                <ul>
-                                    <li *ngFor="let tag of term.tags">
-                                        {{tag}}
-                                    </li>
-                                </ul>
+                                <div class="tags-container">
+                                    <div class="tag" *ngFor="let tag of term.tags">
+                                        <p><span>#</span>{{tag}}</p>
+                                    </div>
+                                </div>
+                                <div class="links-container">
+                                    <div *ngFor="let link of term.links" class="link-row">
+                                        <fa-icon [icon]="faArrowRight"></fa-icon>
+                                        <div class="link"><p><a href="{{link}}" target="_blank">{{link}}</a></p></div>
+                                    </div>
+                                </div>
                             </div>
                     </div>
                 </div>

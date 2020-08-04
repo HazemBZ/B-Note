@@ -3,7 +3,7 @@ import { TermServiceService } from '../term-service.service';
 import { Term } from '../term';
 import { filter, map, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
-import { faCoffee , faTrashAlt ,faSearch, faPen } from "@fortawesome/free-solid-svg-icons";
+import { faCoffee , faTrashAlt ,faSearch, faPen, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-search-page',
@@ -15,10 +15,12 @@ export class SearchPageComponent implements OnInit {
   async_terms:Observable<Term[]>;
   terms:Term[];
   private searchTerms = new Subject<string>();
+  // icons
   faCoffee = faCoffee;
   faTrash = faTrashAlt;
   faSearch = faSearch;
   faPen = faPen;
+  faArrowRight = faArrowRight;
 
   constructor(private termService:TermServiceService) {
     
