@@ -12,6 +12,8 @@ import { UpdateTermComponent } from './update-term/update-term.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {  FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { TagComponent } from './tag/tag.component';
+import { TagDirective } from './tag.directive';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
     SearchPageComponent,
     NavBarComponent,
     AddTermComponent,
-    UpdateTermComponent
+    UpdateTermComponent,
+    TagComponent,
+    TagDirective
   ],
   imports: [
     BrowserModule,

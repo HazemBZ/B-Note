@@ -6,9 +6,6 @@
     height: 100%;
 }
 
-.cont {
-
-}
 
 div.title {
     width: 90%;
@@ -127,4 +124,31 @@ button {
 
 fa-icon {
     color:black;
+}
+
+div.tags-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+div.tag {
+    margin: 5px;
+    font-size: 0.9em;
+    height: auto;
+    padding: 0;
+}
+
+div.add{
+    min-width: 200px;
+    margin-left: 40px;
+}
+
+#addTag{
+    width:50px;
+    height: 50px;
+    margin:auto;
+    text-align: center;
+    border: 3px solid black;
+    border-radius: 50%;
 }

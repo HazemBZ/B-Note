@@ -4,7 +4,7 @@
 
             <h1 class="title">Update Page</h1>
         </div>
-
+            
             <div *ngIf="term" class="content-wrapper" id="">
                 <div class="controls">
                     <button class="save-control" (click)="update(term)">
@@ -18,13 +18,26 @@
                         <label class="label" ><h3 class="sub-title">Term</h3></label>
                         <!-- {{(term|async).term}} -->
                         <div class="control">
-                            <input class="" [(ngModel)]="term.term">
+                            <input class="term" [(ngModel)]="term.term">
                         </div>
                     </div>
                     <div class="field">
                         <label class="label"><h3 class="sub-title">Description</h3></label>
                         <div class="control">
-                            <textarea class="" [(ngModel)]="term.desc"></textarea>
+                            <textarea class="description" [(ngModel)]="term.desc"></textarea>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="sub-title">Tags</h3>
+                        <div class="tags-container">
+                            
+                            <div *ngFor="let tag of term.tags; let i=index; trackBy:trackByFn" class="tag">
+                                <input id="{{i}}" class="term tag" [(ngModel)]="term.tags[i]">
+                            </div>
+                            <div class="hidden" tagHost ></div>
+                            <div >
+                                <button class="add" (click)="addTag()" id="addTag"><fa-icon [icon]="faPlus"></fa-icon></button>
+                            </div>
                         </div>
                     </div>
                 </div>
