@@ -1,3 +1,3 @@
 export interface TagData {
-    data: any;
+     data: any;
 }

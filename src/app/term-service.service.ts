@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { catchError, map, tap} from 'rxjs/operators';
+import { Observable, of, Subject } from 'rxjs';
+import { catchError, map, tap, switchMap} from 'rxjs/operators';
 import { Term } from './term';
 
 @Injectable({
@@ -15,6 +15,9 @@ export class TermServiceService {
       'Content-Type': "application/json"
     })
   }
+
+  public tags = [];
+  public index= 0;
 
   constructor(private http:HttpClient) { }
 
@@ -60,5 +63,32 @@ export class TermServiceService {
     );
   }
 
+  //// tags update 
+  // tagsSubjects: Subject<any>[] = <any>[];
+  // $tagsObs: Observable<any>[] = [];
+
+  // createTag(index){
+  //   this.tagsSubjects[index] = new Subject<any>();
+  //   this.$tagsObs[index] = this.tagsSubjects[index].pipe();
+    
+  //   console.log("CREATE TAG: this.tagsSubjects ",this.tagsSubjects)
+  // }
+
+  // getTag(index){
+    
+  //   let inter = this.$tagsObs[index];
+  //   console.log("getTag ", inter);
+  //   return inter;
+  // }
+
+  updateTag(index, data){
+    this.tags[index] = data;
+  }
+
+  // getSub(index){
+  //   return this.tagsSubjects[index];
+  // }
+
+   
 
 }

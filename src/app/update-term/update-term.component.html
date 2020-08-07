@@ -1,7 +1,7 @@
 <div class="wrapper" >
     <section class="section cont">
         <div class="title container">
-
+            
             <h1 class="title">Update Page</h1>
         </div>
             
@@ -13,7 +13,7 @@
                     
                 </div>
                 <div class="content-container">
-
+                    
                     <div class="field">
                         <label class="label" ><h3 class="sub-title">Term</h3></label>
                         <!-- {{(term|async).term}} -->
@@ -32,11 +32,11 @@
                         <div class="tags-container">
                             
                             <div *ngFor="let tag of term.tags; let i=index; trackBy:trackByFn" class="tag">
-                                <input id="{{i}}" class="term tag" [(ngModel)]="term.tags[i]">
+                                <input #input id="{{i}}" class="term tag" [value]="term.tags[i]" (input)="updateTag(i, input.value)">
                             </div>
-                            <div class="hidden" tagHost ></div>
-                            <div >
-                                <button class="add" (click)="addTag()" id="addTag"><fa-icon [icon]="faPlus"></fa-icon></button>
+                            <div class="hidden" tagHost></div>
+                            <div  >
+                                <button class="add" id="addTag" (click)="addTag()"><fa-icon [icon]="faPlus"></fa-icon></button>
                             </div>
                         </div>
                     </div>
