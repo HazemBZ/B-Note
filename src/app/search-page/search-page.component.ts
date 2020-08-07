@@ -36,7 +36,11 @@ export class SearchPageComponent implements OnInit {
     this.async_terms.subscribe((terms)=>{this.terms = terms; console.log(`recieved ${JSON.stringify(terms)}`)});
   }
 
-
+  filter(text){
+    console.log("text",text);
+    this.terms = this.terms.filter((term)=>  term.tags? term.tags.includes(text) :false);
+    console.log(this.terms)
+  }
 
   search(term:string):void {
     this.searchTerms.next(term);

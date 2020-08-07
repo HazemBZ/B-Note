@@ -1,7 +1,9 @@
 
-<div class="tile is-ancestor wrapper">
+<div id="top" class="tile is-ancestor wrapper">
 
     <app-nav-bar class="tile is-2"></app-nav-bar>
-    
+    <div class="top">
+        <a href="{{router.url}}#"><fa-icon [icon]="faArrow"></fa-icon></a>
+    </div>
     <router-outlet  ></router-outlet>
 </div>

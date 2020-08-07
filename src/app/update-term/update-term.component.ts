@@ -31,7 +31,7 @@ export class UpdateTermComponent implements OnInit {
   faPlus = faPlus;
   
   constructor(
-    private route:ActivatedRoute, 
+    private route:ActivatedRoute,
     private location:Location,
     private termService:TermServiceService,
     private componentFactoryResolver: ComponentFactoryResolver,
