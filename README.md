@@ -1,7 +1,11 @@
 # Note
 
-to run the project 
+###install dependencies
+```
+npm install
+```
 
+###to run the project 
 ```
 npm run start:electron
 ```
