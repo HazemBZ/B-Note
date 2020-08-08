@@ -14,4 +14,8 @@ export class AppComponent {
   constructor(public router: Router){
   }
 
+  scroll(target){
+    target.scrollIntoView();
+  }
+
 }

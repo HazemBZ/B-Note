@@ -1,14 +1,5 @@
-@import "~bulma/css/bulma.css";
 
-/* #search{
-    position: absolute;
-    left: 35%;
-    background-color: rgba(240, 248, 255, 0) ;
-    border-color:  rgba(240, 248, 255, 0) ;
-    background-image: url(~/assets/search.png);
-    width: 64px;
-    height: 64px;
-} */
+
 
 .container {
     min-height: 1000px;
@@ -20,26 +11,15 @@
     align-content: center;
 }
 
-#search {
-    /* width: 100%; */
-}
-
-
 .add-div{
     background-color: white;
 }
 
-.add-div:hover{
-    /* background-color: rgba(95, 158, 160, 0.479); */
-}
 
 .search-div{
     background-color: white;
 }
 
-.search-div:hover{
-    /* background-color: black; */
-}
 
 
 .round {
