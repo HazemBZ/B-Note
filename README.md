@@ -5,7 +5,7 @@
 npm install
 ```
 
-### to run the project 
+### run the project 
 ```
 npm run start:electron
 ```
