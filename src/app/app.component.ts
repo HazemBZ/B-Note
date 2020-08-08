@@ -13,5 +13,8 @@ export class AppComponent {
 
   constructor(public router: Router){
   }
-
+  
+  scroll(el) {
+    el.scrollIntoView({behavior:"smooth"});
+  }
 }
