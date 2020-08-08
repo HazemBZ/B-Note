@@ -15,7 +15,7 @@ export class AppComponent {
   }
 
   scroll(target){
-    target.scrollIntoView();
+    target.scrollIntoView({behavior: "smooth"});
   }
 
 }
