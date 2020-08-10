@@ -3,13 +3,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, Subject } from 'rxjs';
 import { catchError, map, tap, switchMap} from 'rxjs/operators';
 import { Term } from './term';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TermServiceService {
 
-  private termsUrl:string = "http://localhost:8000/terms";
+  private termsUrl:string = "http://192.168.1.3:8000/terms";
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': "application/json"
@@ -22,7 +23,7 @@ export class TermServiceService {
   constructor(private http:HttpClient) { }
 
   getTerm(id:string):Observable<Term> {
-    const url = `http://localhost:8000/term?id=${id}`;
+    const url = `http://192.168.1.3:8000/term?id=${id}`;
     return this.http.get<Term>(url, this.httpOptions);
   }
   
@@ -36,7 +37,7 @@ export class TermServiceService {
     term = term.trim();
     if (!term) return of([]);
     
-    const url = `http://localhost:8000/terms?term=${term}`;
+    const url = `http://192.168.1.3:8000/terms?term=${term}`;
     return this.http.get<Term[]>(url).pipe(
       tap(_=>console.log(JSON.stringify(_)))
     );
