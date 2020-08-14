@@ -9,7 +9,8 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class TermServiceService {
-  private termsUrl:string = `http://${environment.api_ip}:${environment.api_port}/terms`;
+  private base:string = `http://${environment.api_ip}:${environment.api_port}`; 
+  private termsUrl:string = `${this.base}/terms`;
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': "application/json"
@@ -22,7 +23,7 @@ export class TermServiceService {
   constructor(private http:HttpClient) { }
 
   getTerm(id:string):Observable<Term> {
-    const url = `${this.termsUrl}?id=${id}`;
+    const url = `${this.base}/term?id=${id}`;
     return this.http.get<Term>(url, this.httpOptions);
   }
   
