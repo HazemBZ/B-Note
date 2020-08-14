@@ -14,6 +14,7 @@ import {  FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { TagComponent } from './tag/tag.component';
 import { TagDirective } from './tag.directive';
+import { FocusLayerComponent } from './focus-layer/focus-layer.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TagDirective } from './tag.directive';
     AddTermComponent,
     UpdateTermComponent,
     TagComponent,
-    TagDirective
+    TagDirective,
+    FocusLayerComponent
   ],
   imports: [
     BrowserModule,

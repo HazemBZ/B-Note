@@ -9,7 +9,16 @@
             </div>   
             <div class="container">
                 <div class="search-field">
-                    <div class=""> 
+                    <div class="search-parent">
+                    <div class="categories-holder"></div>
+                        <div class="arrow" (click)="toggleCategories()">
+                            <div class="ar">
+                               <div>
+                                <fa-icon class="arrow-down" [icon]="categoriesArrow"></fa-icon></div>
+                               </div>
+                            </div>
+
+                        
                         <input type="search" class="" #searchIn id="searchIn" (input)="search(searchIn.value)">
                     </div>  
                 </div>

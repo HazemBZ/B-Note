@@ -3,7 +3,8 @@ import { TermServiceService } from '../term-service.service';
 import { Term } from '../term';
 import { filter, map, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
-import { faCoffee , faTrashAlt ,faSearch, faPen, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faCoffee , faTrashAlt ,faSearch, faPen, faArrowRight, faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { registerLocaleData } from '@angular/common';
 
 @Component({
   selector: 'app-search-page',
@@ -21,6 +22,8 @@ export class SearchPageComponent implements OnInit {
   faSearch = faSearch;
   faPen = faPen;
   faArrowRight = faArrowRight;
+  categoriesArrow = faArrowUp;
+  catIsUp= true;
 
   constructor(private termService:TermServiceService) {
     
@@ -52,4 +55,15 @@ export class SearchPageComponent implements OnInit {
     this.termService.deleteTerm(term_id).subscribe((resp)=>console.log(JSON.stringify(resp)));
   }
 
+  toggleCategories(){
+    if(this.catIsUp){
+      this.categoriesArrow = faArrowDown;
+    }
+    else {
+      this.categoriesArrow = faArrowUp;
+    }
+
+    this.catIsUp = ! this.catIsUp;
+  }
+  
 }
