@@ -1,11 +1,12 @@
-<div class="wrapper">
 
+<div class="wrapper" >
+    <app-focus-layer id="termPop" [term]="popTerm" ></app-focus-layer>
     <div class="cont">
-        
-
+        <div id="top"></div>
         <section class="section content">
-            <div class="container title">
-                <h1 class="title">Search Page</h1>
+           
+            <div class="container title" >
+                <h1 class="title" >Search Page</h1>
             </div>   
             <div class="container">
                 <div class="search-field">
@@ -23,7 +24,7 @@
                     </div>  
                 </div>
                 
-                <div *ngFor="let term of terms"  class="card-wrapper">
+                <div *ngFor="let term of terms; index as i"  class="card-wrapper" >
                     <div class="controls">
                         <a routerLink="/update/{{term._id}}">
                                 <button  class="add-control" >
@@ -38,7 +39,7 @@
                             </span>
                         </button>
                     </div>
-                    <div  class="card" >
+                    <div  class="card" (click)="showTermPop(i,$event)">
 
                             <div class="card-cont">
                                 <h4 class="term">{{term.term | uppercase}}</h4>

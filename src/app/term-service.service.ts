@@ -16,9 +16,11 @@ export class TermServiceService {
       'Content-Type': "application/json"
     })
   }
-
+  
   public tags = [];
   public index= 0;
+  public termPopShow= false;
+  public lastHighlightTerm;
 
   constructor(private http:HttpClient) { }
 
@@ -90,6 +92,8 @@ export class TermServiceService {
   //   return this.tagsSubjects[index];
   // }
 
-   
+  showTermPop(){
+    this.termPopShow = true;
+  }
 
 }

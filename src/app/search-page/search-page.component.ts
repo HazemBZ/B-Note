@@ -4,7 +4,7 @@ import { Term } from '../term';
 import { filter, map, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
 import { faCoffee , faTrashAlt ,faSearch, faPen, faArrowRight, faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
-import { registerLocaleData } from '@angular/common';
+import { FocusLayerComponent } from '../focus-layer/focus-layer.component';
 
 @Component({
   selector: 'app-search-page',
@@ -16,6 +16,8 @@ export class SearchPageComponent implements OnInit {
   async_terms:Observable<Term[]>;
   terms:Term[];
   private searchTerms = new Subject<string>();
+  termPop = false;
+  popTerm:Term;
   // icons
   faCoffee = faCoffee;
   faTrash = faTrashAlt;
@@ -66,4 +68,13 @@ export class SearchPageComponent implements OnInit {
     this.catIsUp = ! this.catIsUp;
   }
   
+  showTermPop(index,event){
+    console.log(document.getElementsByTagName("html")[0].style.overflow);
+    this.popTerm= this.terms[index];
+    let target = event.target;
+    this.termService.lastHighlightTerm = target;
+    let pop = document.getElementById("termPop");
+    pop.style.display = "block";
+    document.getElementsByTagName("html")[0].style.overflow = "hidden";
+  }
 }

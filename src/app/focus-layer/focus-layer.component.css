@@ -1,0 +1,48 @@
+:host {
+    display: none;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: black;
+    position: absolute;
+}
+
+div.outer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(30, 29, 29, 0.94);
+    margin: 0;
+    /* padding: 15px 10%; */
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+
+div.inner {
+
+    background-color: white;
+    width: 90%;
+    height: 80%;
+    padding: 0;
+    border-radius: 2px;
+    padding: 30px;
+    overflow: hidden;
+    border:2px solid black;
+
+    position: fixed;
+  
+    margin: 5%;
+    
+}
+/* VERY IMPORTANT 
+    nodes that does scrolling on overflow-y require a height to be attributed to it
+*/
+div.content {
+    width: 90%;
+    height: 90%;
+    margin: 5%;
+    overflow: scroll;
+}

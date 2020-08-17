@@ -9,10 +9,14 @@
     width: 64px;
     height: 64px;
 } */
+:host{
+    overflow: hidden;
+}
 
 .container {
     min-height: 1000px;
     background-color: #1F2027;
+    width: 100%;
 }
 
 #add {
@@ -48,7 +52,7 @@
     height: 90px;
     border-radius: 50%;
     border:6px solid black;
-    margin: auto;
+    margin: auto auto;
     margin-top: 50px;
     
     /* background: url(~/assets/search.png) fixed center no-repeat ; */
@@ -63,4 +67,9 @@ fa-icon:hover{
     font-size: 3.5rem;
     position:relative;
     top:-5px;
+}
+
+
+div.container {
+
 }

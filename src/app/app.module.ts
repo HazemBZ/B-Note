@@ -25,7 +25,7 @@ import { FocusLayerComponent } from './focus-layer/focus-layer.component';
     UpdateTermComponent,
     TagComponent,
     TagDirective,
-    FocusLayerComponent
+    FocusLayerComponent,
   ],
   imports: [
     BrowserModule,

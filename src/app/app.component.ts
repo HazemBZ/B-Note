@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
+import { R3TargetBinder } from '@angular/compiler';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,6 +16,8 @@ export class AppComponent {
   }
   
   scroll(el) {
-    el.scrollIntoView({behavior:"smooth"});
+    // el.scrollIntoView({behavior:"smooth"});
+    let ele = document.getElementById('top');
+    ele.scrollIntoView({behavior:"smooth"});
   }
 }
