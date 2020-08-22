@@ -3,7 +3,8 @@ import { TermServiceService } from '../term-service.service';
 import { Term } from '../term';
 import { filter, map, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
-import { faCoffee , faTrashAlt ,faSearch, faPen, faArrowRight, faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { faCoffee , faTrashAlt ,faSearch, faPen, faArrowRight, faArrowDown, faArrowUp } 
+        from "@fortawesome/free-solid-svg-icons";
 import { FocusLayerComponent } from '../focus-layer/focus-layer.component';
 
 @Component({

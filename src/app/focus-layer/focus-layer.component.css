@@ -46,3 +46,21 @@ div.content {
     margin: 5%;
     overflow: scroll;
 }
+div.links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+div.link {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+div.link p {
+    margin: 0 7px;
+}
+
+.sub-title {
+    margin: 5px 0;
+}
