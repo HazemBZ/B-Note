@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { TermServiceService } from '../term-service.service';
 import { Term } from '../term';
 import { filter, map, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, of } from 'rxjs';
 import { faCoffee , faTrashAlt ,faSearch, faPen, faArrowRight, faArrowDown, faArrowUp } 
         from "@fortawesome/free-solid-svg-icons";
-import { FocusLayerComponent } from '../focus-layer/focus-layer.component';
 
 @Component({
   selector: 'app-search-page',
@@ -15,10 +14,18 @@ import { FocusLayerComponent } from '../focus-layer/focus-layer.component';
 })
 export class SearchPageComponent implements OnInit {
   async_terms:Observable<Term[]>;
-  terms:Term[];
+  terms:Term[]= [];
   private searchTerms = new Subject<string>();
-  termPop = false;
   popTerm:Term;
+  filteredTerms:Term[] = [];
+  categoriesFilter = []
+  selectedCategories = []
+  allCateg = null;
+  //states
+  catIsUp= true;
+  termPop = false;
+  showCategories=false;
+  allCategSelected = false;
   // icons
   faCoffee = faCoffee;
   faTrash = faTrashAlt;
@@ -26,7 +33,16 @@ export class SearchPageComponent implements OnInit {
   faPen = faPen;
   faArrowRight = faArrowRight;
   categoriesArrow = faArrowUp;
-  catIsUp= true;
+  categories = [
+    "ALL",
+    "Music",
+    "IT",
+    "Note",
+    "Manga",
+    "Sports",
+    "News",
+    "Term",
+  ]
 
   constructor(private termService:TermServiceService) {
     
@@ -37,14 +53,14 @@ export class SearchPageComponent implements OnInit {
     this.async_terms = this.searchTerms.pipe(
        debounceTime(300),
       distinctUntilChanged(),
-      switchMap((term:string)=> this.termService.getTermsLike(term))
+      switchMap((term:string)=> of((this.terms.filter((elem)=> elem.term.toLocaleLowerCase().includes(term.toLocaleLowerCase())))))
     );
-    this.async_terms.subscribe((terms)=>{this.terms = terms; console.log(`recieved ${JSON.stringify(terms)}`)});
+    this.async_terms.subscribe((terms)=>{this.filteredTerms = terms; console.log(`recieved ${JSON.stringify(terms)}`)});
   }
 
   filter(text){
     console.log("text",text);
-    this.terms = this.terms.filter((term)=>  term.tags? term.tags.includes(text) :false);
+    this.filteredTerms = this.filteredTerms.filter((term)=>  term.tags? term.tags.includes(text) :false);
     console.log(this.terms)
   }
 
@@ -71,11 +87,77 @@ export class SearchPageComponent implements OnInit {
   
   showTermPop(index,event){
     console.log(document.getElementsByTagName("html")[0].style.overflow);
-    this.popTerm= this.terms[index];
+    this.popTerm= this.filteredTerms[index];
     let target = event.target;
+    console.log("showing indexed",index,"term",target);
+
     this.termService.lastHighlightTerm = target;
     let pop = document.getElementById("termPop");
     pop.style.display = "block";
     document.getElementsByTagName("html")[0].style.overflow = "hidden";
   }
+
+  searchByCategory(categ, evt) {
+    let element = evt.target;    
+    console.log('element', element)
+    console.log(`clicked category:,${categ}`);
+    if(categ == "ALL" ) {
+      if (!this.allCategSelected) {
+
+        this.categoriesFilter = [];
+        
+        this.termService.getTermsByCategories([]).subscribe((res)=> {console.log(`search result:`,res);this.terms = this.filteredTerms = res});
+        this.selectCategory(element,categ);
+        this.allCategSelected = true;
+        console.log(`searching by categories`,this.categoriesFilter);
+        if(this.selectedCategories.length > 0) {
+          this.selectedCategories.forEach((elem)=> {this.unselectCategory(elem,'stub');this.selectedCategories = []});
+        }
+        if(!this.allCateg) this.allCateg = element;
+        
+      } else {
+        this.unselectCategory(this.allCateg,'ALL');
+      }
+      return
+      }
+     
+    if(this.allCategSelected) {
+      this.allCategSelected = false;
+      this.unselectCategory(this.allCateg,"ALL");
+      
+      
+    }
+    if(!this.categoriesFilter.includes(categ)) {
+      this.categoriesFilter.push(categ);
+      this.selectCategory(element,categ);
+      this.selectedCategories.push(element);
+      
+    }
+    else {
+      this.categoriesFilter = this.categoriesFilter.filter((el)=>el!=categ); // slow opr
+      this.unselectCategory(element,categ);
+      this.selectedCategories = this.selectedCategories.filter((elem)=> elem!=element)
+
+    }
+
+    console.log(`searching by categories`,this.categoriesFilter);
+    if(this.categoriesFilter.length == 0)return;
+    
+    else {
+    this.termService.getTermsByCategories(this.categoriesFilter).subscribe((res)=> {console.log(`search result:`,res);this.terms = this.filteredTerms = res});
+    }
+  }
+
+  unselectCategory(element,cat) {
+    let attrs = element.attributes['class'].textContent;
+    let new_attrs  = attrs.replace("selected", "idle");
+    element.attributes['class'].textContent = new_attrs;
+
+  }
+
+  selectCategory(element,cat) {
+    let cont = element.attributes['class'].textContent;
+    element.attributes['class'].textContent = cont.replace('idle', 'selected');
+  }
+  
 }

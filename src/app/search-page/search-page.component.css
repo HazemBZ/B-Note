@@ -69,7 +69,7 @@ h4.term {
 .search-field {
     width: 50%;
     margin: 0 auto;
-    margin-bottom: 50px;
+    margin-bottom: 150px;
 }
 
 
@@ -239,11 +239,32 @@ div.arrow:hover {
 }
 
 .categories {
-    width: 100px;
-    /* background-color: red; */
-    display: inline-block;
-    height: 100%;
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    
 }
+
+.category {
+    
+    width: 100px;
+    background-color: white;
+    color:#1F2027;
+    font-size: 20px;
+    text-align: center;
+    
+}
+.category:hover {
+    background-color: rgb(184, 179, 179);
+}
+
  fa-icon.arrow-down {
     width: 50px;
     height: 50px;
@@ -251,4 +272,9 @@ div.arrow:hover {
 
     text-align: center;
     
+}
+
+p.selected {
+    color:#fff;
+    background-color:#1f2027;
 }

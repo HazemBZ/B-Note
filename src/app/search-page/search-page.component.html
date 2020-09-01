@@ -11,20 +11,22 @@
             <div class="container">
                 <div class="search-field">
                     <div class="search-parent">
-                    <div class="categories-holder"></div>
+                    <div class="categories-holder" ></div>
                         <div class="arrow" (click)="toggleCategories()">
                             <div class="ar">
                                <div>
                                 <fa-icon class="arrow-down" [icon]="categoriesArrow"></fa-icon></div>
                                </div>
                             </div>
-
-                        
+                        <!--CATEGORIES-->
+                        <div class="categories"> 
+                            <div class="category idle"  *ngFor="let category of categories" ><p class="idle" (click)="searchByCategory(category,$event);$event.stopPropagation()">{{category}}</p></div>
+                        </div>
                         <input type="search" class="" #searchIn id="searchIn" (input)="search(searchIn.value)">
                     </div>  
                 </div>
                 
-                <div *ngFor="let term of terms; index as i"  class="card-wrapper" >
+                <div *ngFor="let term of filteredTerms; index as i"  class="card-wrapper" >
                     <div class="controls">
                         <a routerLink="/update/{{term._id}}">
                                 <button  class="add-control" >
@@ -45,7 +47,7 @@
                                 <h4 class="term">{{term.term | uppercase}}</h4>
                                 <div class="card-text">{{term.desc}}</div>
                                 <div class="tags-container">
-                                    <div #tag (click)="filter(tag)" class="tag" *ngFor="let tag of term.tags">
+                                    <div #tag (click)="$event.stopPropagation();filter(tag)" class="tag" *ngFor="let tag of term.tags">
                                         <p><span>#</span>{{tag}}</p>
                                     </div>
                                 </div>

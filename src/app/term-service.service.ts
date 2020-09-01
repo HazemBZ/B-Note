@@ -45,6 +45,12 @@ export class TermServiceService {
     );
   }
 
+  getTermsByCategories(cat:any[]):Observable<any> { // for now by one cat
+    
+    return this.http.get<Term[]>(`${this.termsUrl}?categories=${cat.join('+')}`);
+
+  }
+
   addTerm(term:Term):Observable<any>{
     const url = `${this.termsUrl}/add`;
     return this.http.post<any>(url, [term], this.httpOptions).pipe(
