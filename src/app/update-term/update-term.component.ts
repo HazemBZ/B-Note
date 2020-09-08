@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import { Term } from '../term';
 import { TermServiceService } from '../term-service.service';
 import { Observable, of } from 'rxjs'
-import { faSave ,faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faSave ,faPlus ,faCross } from '@fortawesome/free-solid-svg-icons';
 
 import { ViewChild, ComponentFactoryResolver } from '@angular/core';
 import { TagDirective } from '../tag.directive';
@@ -24,11 +24,13 @@ export class UpdateTermComponent implements OnInit {
 
   async_term:Observable<Term>;
   term:Term ;
+  categories:string[] = [];
   // setup phase before handles data
 
 
   faSave = faSave;
   faPlus = faPlus;
+  faCross = faCross;
   
   constructor(
     private route:ActivatedRoute,
@@ -39,6 +41,7 @@ export class UpdateTermComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTerm(this.route.snapshot.paramMap.get('id'));
+    this.categories = this.termService.getCategories();
   }
 
   setMeta(){
@@ -48,6 +51,7 @@ export class UpdateTermComponent implements OnInit {
   fitTerm(){
     console.log("fitting...", this.term);
     if(!this.term.tags) this.term.tags = [];
+    if(!this.term.categories) this.term.categories = [];
     console.log("fit", this.term);
   }
 
@@ -128,6 +132,10 @@ export class UpdateTermComponent implements OnInit {
   trackByFn(index:any, item:any){
     return index;
   }
-
-
+  
+  toggleCategory(category) {
+    if(category == "ALL") return;
+    if(this.term.categories.includes(category)) this.term.categories.splice(this.term.categories.indexOf(category),1);
+    else this.term.categories.push(category);
+  }
 }

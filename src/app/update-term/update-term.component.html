@@ -1,7 +1,7 @@
-<div class="wrapper" id="top">
+<div class="wrapper">
+    <div id="top"></div>
     <section class="section cont">
         <div class="title container">
-            
             <h1 class="title">Update Page</h1>
         </div>
             
@@ -38,6 +38,16 @@
                             <div  >
                                 <button class="add" id="addTag" (click)="addTag()"><fa-icon [icon]="faPlus"></fa-icon></button>
                             </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="sub-title">Categories</h3>
+                        <div class="categories-container">
+                            <button class="category" *ngFor="let category of categories" [class.selected]="term.categories.includes(category)"
+                            (click)="toggleCategory(category)">
+                                {{category}}
+                                <fa-icon *ngIf="term.categories.includes(category)" [icon]="faCross"></fa-icon>
+                            </button>
                         </div>
                     </div>
                 </div>

@@ -2,7 +2,6 @@
 @import "~bulma/css/bulma.css";
 
 body{
-    min-height: 1000px;
     padding: 0;
     margin: 0;
 }

@@ -102,4 +102,18 @@ export class TermServiceService {
     this.termPopShow = true;
   }
 
+  // prototype implementation
+  getCategories():string[] {
+    return [
+      "ALL",
+      "Music",
+      "IT",
+      "Note",
+      "Manga",
+      "Sports",
+      "News",
+      "Term",
+    ];
+  }
+
 }

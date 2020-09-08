@@ -244,11 +244,13 @@ div.arrow:hover {
     position: absolute;
     top: 50px;
     left: 0;
-    background-color: red;
+    /* background-color: red; */
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    margin: 15px;
+
     
 }
 
