@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { TermServiceService } from '../term-service.service';
 import { Term } from '../term';
 import { filter, map, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
@@ -12,7 +12,7 @@ import { faCoffee , faTrashAlt ,faSearch, faPen, faArrowRight, faArrowDown, faAr
   styleUrls: ['./search-page.component.css'],
   host: {'class': 'search tile is-11'}
 })
-export class SearchPageComponent implements OnInit {
+export class SearchPageComponent implements OnInit ,AfterViewInit{
   async_terms:Observable<Term[]>;
   terms:Term[]= [];
   private searchTerms = new Subject<string>();
@@ -48,6 +48,7 @@ export class SearchPageComponent implements OnInit {
     
    }
 
+
   ngOnInit(): void {
     // this.getTerms();
     this.async_terms = this.searchTerms.pipe(
@@ -55,7 +56,19 @@ export class SearchPageComponent implements OnInit {
       distinctUntilChanged(),
       switchMap((term:string)=> of((this.terms.filter((elem)=> elem.term.toLocaleLowerCase().includes(term.toLocaleLowerCase())))))
     );
-    this.async_terms.subscribe((terms)=>{this.filteredTerms = terms; console.log(`recieved ${JSON.stringify(terms)}`)});
+    this.async_terms.subscribe((terms)=>{this.filteredTerms = terms; console.log(`recieved ${JSON.stringify(terms)}`);});
+      
+  }
+
+  ngAfterViewInit(){
+    let el = document.getElementById('all').click();
+  }  
+
+  async_init(){
+    let el = document.getElementById('all');
+    console.log(el);
+    el.click();
+    
   }
 
   filter(text){
@@ -116,6 +129,7 @@ export class SearchPageComponent implements OnInit {
         if(!this.allCateg) this.allCateg = element;
         
       } else {
+        return;
         this.unselectCategory(this.allCateg,'ALL');
       }
       return

@@ -20,7 +20,9 @@
                             </div>
                         <!--CATEGORIES-->
                         <div class="categories"> 
-                            <div class="category idle"  *ngFor="let category of categories" ><p class="idle" (click)="searchByCategory(category,$event);$event.stopPropagation()">{{category}}</p></div>
+                            <div class="category idle" *ngFor="let category of categories; index as i" >
+                                <p class="idle" [id]="i==0?'all':''" (click)="searchByCategory(category,$event);$event.stopPropagation()">{{category}}</p>
+                            </div>
                         </div>
                         <input type="search" class="" #searchIn id="searchIn" (input)="search(searchIn.value)">
                     </div>  

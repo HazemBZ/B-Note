@@ -52,3 +52,4 @@ flask_app
 src/assets
 public/*
 *.log
+*.sh
