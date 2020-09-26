@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of, Subject } from 'rxjs';
+import { Observable, of, Subject, concat } from 'rxjs';
 import { catchError, map, tap, switchMap} from 'rxjs/operators';
 import { Term } from './term';
 import { environment } from 'src/environments/environment';
@@ -21,6 +21,7 @@ export class TermServiceService {
   public index= 0;
   public termPopShow= false;
   public lastHighlightTerm;
+  public markdown:Observable<string> = null;
 
   constructor(private http:HttpClient) { }
 
@@ -68,7 +69,14 @@ export class TermServiceService {
   updateTerm(term:Term):Observable<any> {
     const url = "";
     return this.http.patch<any>(`http://${environment.api_ip}:${environment.api_port}/term/patch`, term,this.httpOptions).pipe(
-      tap(_=> console.log("sending " + JSON.stringify(_)))
+      tap(_=> console.log("received " + JSON.stringify(_)))
+    );
+  }
+
+  parseMarkdown(markdown:string):Observable<any> {
+    const url = `http://${environment.api_ip}:${environment.api_port}/markdown/html`;
+    return this.http.post<any>(url, [markdown], this.httpOptions).pipe(
+      tap(_=> console.log("received " + JSON.stringify(_)))
     );
   }
 

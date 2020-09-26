@@ -108,6 +108,7 @@ export class SearchPageComponent implements OnInit ,AfterViewInit{
     let pop = document.getElementById("termPop");
     pop.style.display = "block";
     document.getElementsByTagName("html")[0].style.overflow = "hidden";
+    this.updateMardown(this.popTerm.desc);
   }
 
   searchByCategory(categ, evt) {
@@ -172,6 +173,10 @@ export class SearchPageComponent implements OnInit ,AfterViewInit{
   selectCategory(element,cat) {
     let cont = element.attributes['class'].textContent;
     element.attributes['class'].textContent = cont.replace('idle', 'selected');
+  }
+  
+  updateMardown(markdown) {
+    this.termService.markdown = markdown;
   }
   
 }
