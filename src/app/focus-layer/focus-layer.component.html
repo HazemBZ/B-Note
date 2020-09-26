@@ -1,23 +1,30 @@
 <div class="outer"  (click)="hide()" *ngIf="term">
     <div class="inner" (click)="$event.stopPropagation()">
         <div class="content">
-            <h2 >{{term.term}}</h2>
-            <div class="description"><p>{{term.desc}}</p></div>
-            <!-- <div class="tags">
-            </div> -->
+            <h2 >{{term.term | uppercase}}</h2>
+            <!-- <div class="description"><p>{{term.desc}}</p></div>
             <h4 class="sub-title">Links</h4>
             <div class="links">
                 <div class="link" *ngFor="let link of term.links">
                     <fa-icon [icon]="faArrowRight"></fa-icon>
                     <div class="link"><p><a href="{{link.value}}" target="_blank" >{{link.alias}}</a></p></div>
                 </div>
-            </div>
-            <div id="markdown">
+            </div> -->
+            <div id="markdown" [class]="!inPreview?'visible':'hidden'">
+                <!-- <h2>Markdown</h2> -->
                 <textarea #mark [ngModel]="this.termService.markdown" name="" id="" cols="30" rows="10"></textarea>
             </div>
-            <div id="toggler" (click)="refreshView(mark.value)" style="width: 50px; height: 50px; border: 2px solid black;">Toggle</div>
-            <h2>Overview</h2>
-            <div id="overview" [innerHTML]="desc_html"></div>
+            <div id="overview-holder" [class]="inPreview?'visible':'hidden'">
+                <!-- <h2>Overview</h2> -->
+                <div id="overview" [innerHTML]="desc_html"></div>
+            </div>
+            
+        </div>
+        <div class="toggler-holder">
+            <div id="toggler" (click)="refreshView(mark.value)" >
+                <fa-icon *ngIf="!inPreview" [icon]="faEdit"></fa-icon>
+                <fa-icon *ngIf="inPreview" [icon]="faEye"></fa-icon>
+            </div>
         </div>
     </div>
 </div>

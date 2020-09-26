@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Term } from '../term';
 import { TermServiceService} from '../term-service.service';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faEdit, faEye } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -11,9 +11,12 @@ import { Observable } from 'rxjs';
 })
 export class FocusLayerComponent implements OnInit {
   @Input() term:Term; // constuct html UI and bind elements to Term construct
-  faArrowRight = faArrowRight;
   desc_html:Observable<any> = null;
-  // state
+  // FAs
+  faArrowRight = faArrowRight;
+  faEdit = faEdit;
+  faEye = faEye;
+  // states
   inPreview = true;
 
   constructor(public termService:TermServiceService) { }
@@ -35,5 +38,10 @@ export class FocusLayerComponent implements OnInit {
 
   refreshView(mark){
     this.termService.parseMarkdown(mark).subscribe((resp=> this.desc_html = resp.parse_result));
+    this.toggleViewMode();
+  }
+
+  toggleViewMode(){
+    this.inPreview = ! this.inPreview;
   }
 }
