@@ -82,7 +82,7 @@ export class SearchPageComponent implements OnInit ,AfterViewInit{
   }
 
   delete(term_id:string, current_term:string) {
-    this.terms = this.terms.filter((term)=>term._id !== term_id);
+    this.filteredTerms = this.terms.filter((term)=>term._id !== term_id);
     console.log(`after deletetion=> ${JSON.stringify(this.terms)}`);
     this.termService.deleteTerm(term_id).subscribe((resp)=>console.log(JSON.stringify(resp)));
   }
