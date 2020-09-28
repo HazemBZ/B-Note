@@ -3,6 +3,8 @@ import { Term } from '../term';
 import { TermServiceService} from '../term-service.service';
 import { faArrowRight, faEdit, faEye } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
+import { EventEmitter } from 'protractor';
+import { cpuUsage } from 'process';
 
 @Component({
   selector: 'app-focus-layer',
@@ -11,7 +13,7 @@ import { Observable } from 'rxjs';
 })
 export class FocusLayerComponent implements OnInit {
   @Input() term:Term; // constuct html UI and bind elements to Term construct
-  desc_html:Observable<any> = null;
+  
   // FAs
   faArrowRight = faArrowRight;
   faEdit = faEdit;
@@ -23,7 +25,7 @@ export class FocusLayerComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("focus term", this.term);
-
+    
     // this.desc_html.subscribe((html)=> document.getElementById("overview").innerHTML = html);
   }
 
@@ -34,14 +36,22 @@ export class FocusLayerComponent implements OnInit {
     // document.getElementById('top').scrollIntoView(); // workaround for absolute position display (deprecated) 
     document.getElementsByTagName("html")[0].style.overflow = "";
     // alert("hidden");
+    this.inPreview = true;
+    
   }
 
   refreshView(mark){
-    this.termService.parseMarkdown(mark).subscribe((resp=> this.desc_html = resp.parse_result));
+    this.termService.updateParsedMardown(mark);
     this.toggleViewMode();
+    this.term.desc = mark;
+    this.saveDescription(this.term);
   }
 
   toggleViewMode(){
     this.inPreview = ! this.inPreview;
+  }
+
+  saveDescription(term:Term){
+    this.termService.updateTerm(term).subscribe(()=>console.log);
   }
 }

@@ -28,7 +28,7 @@
                     </div>  
                 </div>
                 
-                <div *ngFor="let term of filteredTerms; index as i"  class="card-wrapper" >
+                <div *ngFor="let term of termService.filteredTerms; index as i"  class="card-wrapper" >
                     <div class="controls">
                         <a routerLink="/update/{{term._id}}">
                                 <button  class="add-control" >

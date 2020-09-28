@@ -35,7 +35,7 @@ div.inner {
     position: fixed;
   
     margin: 5%;
-    padding-bottom: 50px;
+    padding-bottom: 0;
     
 }
 /* VERY IMPORTANT 
@@ -86,4 +86,13 @@ div.link p {
 
 .hidden {
     display: none;
+}
+
+#mark-area {
+    min-width: 100%;
+    /* max-width: 90%; */
+    min-height: 300px;
+    resize: none;
+    padding: 5px;
+    border: 2px solid black;
 }

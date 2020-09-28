@@ -17,7 +17,7 @@ export class SearchPageComponent implements OnInit ,AfterViewInit{
   terms:Term[]= [];
   private searchTerms = new Subject<string>();
   popTerm:Term;
-  filteredTerms:Term[] = [];
+  
   categoriesFilter = []
   selectedCategories = []
   allCateg = null;
@@ -44,7 +44,7 @@ export class SearchPageComponent implements OnInit ,AfterViewInit{
     "Term",
   ]
 
-  constructor(private termService:TermServiceService) {
+  constructor(public termService:TermServiceService) {
     
    }
 
@@ -56,7 +56,7 @@ export class SearchPageComponent implements OnInit ,AfterViewInit{
       distinctUntilChanged(),
       switchMap((term:string)=> of((this.terms.filter((elem)=> elem.term.toLocaleLowerCase().includes(term.toLocaleLowerCase())))))
     );
-    this.async_terms.subscribe((terms)=>{this.filteredTerms = terms; console.log(`recieved ${JSON.stringify(terms)}`);});
+    this.async_terms.subscribe((terms)=>{this.termService.filteredTerms = terms; console.log(`recieved ${JSON.stringify(terms)}`);});
       
   }
 
@@ -73,7 +73,7 @@ export class SearchPageComponent implements OnInit ,AfterViewInit{
 
   filter(text){
     console.log("text",text);
-    this.filteredTerms = this.filteredTerms.filter((term)=>  term.tags? term.tags.includes(text) :false);
+    this.termService.filteredTerms = this.termService.filteredTerms.filter((term)=>  term.tags? term.tags.includes(text) :false);
     console.log(this.terms)
   }
 
@@ -82,7 +82,7 @@ export class SearchPageComponent implements OnInit ,AfterViewInit{
   }
 
   delete(term_id:string, current_term:string) {
-    this.filteredTerms = this.terms.filter((term)=>term._id !== term_id);
+    this.termService.filteredTerms = this.terms.filter((term)=>term._id !== term_id);
     console.log(`after deletetion=> ${JSON.stringify(this.terms)}`);
     this.termService.deleteTerm(term_id).subscribe((resp)=>console.log(JSON.stringify(resp)));
   }
@@ -99,16 +99,21 @@ export class SearchPageComponent implements OnInit ,AfterViewInit{
   }
   
   showTermPop(index,event){
+    
     console.log(document.getElementsByTagName("html")[0].style.overflow);
-    this.popTerm= this.filteredTerms[index];
+    this.popTerm= this.termService.filteredTerms[index];
     let target = event.target;
     console.log("showing indexed",index,"term",target);
-
+ 
     this.termService.lastHighlightTerm = target;
     let pop = document.getElementById("termPop");
     pop.style.display = "block";
     document.getElementsByTagName("html")[0].style.overflow = "hidden";
-    this.updateMardown(this.popTerm.desc);
+    
+    this.updateMarkdown(this.popTerm.desc);
+    this.termService.updateParsedMardown(this.popTerm.desc);
+    this.termService.focusedTermIndex = index;   
+    
   }
 
   searchByCategory(categ, evt) {
@@ -120,7 +125,9 @@ export class SearchPageComponent implements OnInit ,AfterViewInit{
 
         this.categoriesFilter = [];
         
-        this.termService.getTermsByCategories([]).subscribe((res)=> {console.log(`search result:`,res);this.terms = this.filteredTerms = res});
+        this.termService.getTermsByCategories([]).subscribe(
+            (res)=> {console.log(`search result:`,res);this.terms = this.termService.filteredTerms = res}
+          );
         this.selectCategory(element,categ);
         this.allCategSelected = true;
         console.log(`searching by categories`,this.categoriesFilter);
@@ -159,7 +166,7 @@ export class SearchPageComponent implements OnInit ,AfterViewInit{
     if(this.categoriesFilter.length == 0)return;
     
     else {
-    this.termService.getTermsByCategories(this.categoriesFilter).subscribe((res)=> {console.log(`search result:`,res);this.terms = this.filteredTerms = res});
+    this.termService.getTermsByCategories(this.categoriesFilter).subscribe((res)=> {console.log(`search result:`,res);this.terms = this.termService.filteredTerms = res});
     }
   }
 
@@ -175,7 +182,7 @@ export class SearchPageComponent implements OnInit ,AfterViewInit{
     element.attributes['class'].textContent = cont.replace('idle', 'selected');
   }
   
-  updateMardown(markdown) {
+  updateMarkdown(markdown) {
     this.termService.markdown = markdown;
   }
   

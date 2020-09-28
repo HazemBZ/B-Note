@@ -12,11 +12,11 @@
             </div> -->
             <div id="markdown" [class]="!inPreview?'visible':'hidden'">
                 <!-- <h2>Markdown</h2> -->
-                <textarea #mark [ngModel]="this.termService.markdown" name="" id="" cols="30" rows="10"></textarea>
+                <textarea id="mark-area" #mark [ngModel]="this.termService.markdown"></textarea>
             </div>
             <div id="overview-holder" [class]="inPreview?'visible':'hidden'">
                 <!-- <h2>Overview</h2> -->
-                <div id="overview" [innerHTML]="desc_html"></div>
+                <div id="overview" [innerHTML]="termService.parsed_markdown"></div>
             </div>
             
         </div>

@@ -22,6 +22,9 @@ export class TermServiceService {
   public termPopShow= false;
   public lastHighlightTerm;
   public markdown:Observable<string> = null;
+  public parsed_markdown:Observable<any> = null;
+  public filteredTerms:Term[] = [];
+  public focusedTermIndex = null;
 
   constructor(private http:HttpClient) { }
 
@@ -78,6 +81,25 @@ export class TermServiceService {
     return this.http.post<any>(url, [markdown], this.httpOptions).pipe(
       tap(_=> console.log("received " + JSON.stringify(_)))
     );
+  }
+
+  public updateParsedMardown(markdown){
+    this.parseMarkdown(markdown).subscribe((resp)=>{
+      this.parsed_markdown= resp.parse_result;this.reflectFocusedTermUpdate(markdown);
+      // term.desc = resp.parse_result;
+    });
+    
+  }
+
+  public reflectFocusedTermUpdate(mark){
+    // console.log(`index is ${this.focusedTermIndex}`);
+    // console.log(`updating description from ${this.filteredTerms[this.focusedTermIndex].desc}`)
+    // console.log(`to ${mark}`)
+    this.filteredTerms[this.focusedTermIndex].desc = mark;
+    // maybe change terms desc to bind to parsedMarkup
+    // thnen update that parsed markup instead
+    // OR maybe seperate description from markup => each an individual attribute of its own
+    
   }
 
   //// tags update 
