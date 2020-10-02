@@ -47,7 +47,7 @@
 
                             <div class="card-cont">
                                 <h4 class="term">{{term.term | uppercase}}</h4>
-                                <div class="card-text">{{term.desc}}</div>
+                                <div class="card-text">{{term.resume}}</div>
                                 <div class="tags-container">
                                     <div #tag (click)="$event.stopPropagation();filter(tag)" class="tag" *ngFor="let tag of term.tags">
                                         <p><span>#</span>{{tag}}</p>

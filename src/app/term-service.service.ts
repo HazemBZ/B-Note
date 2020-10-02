@@ -85,7 +85,7 @@ export class TermServiceService {
 
   public updateParsedMardown(markdown){
     this.parseMarkdown(markdown).subscribe((resp)=>{
-      this.parsed_markdown= resp.parse_result;this.reflectFocusedTermUpdate(markdown);
+      this.parsed_markdown= resp.parse_result;//this.reflectFocusedTermUpdate(markdown);
       // term.desc = resp.parse_result;
     });
     

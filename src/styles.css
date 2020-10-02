@@ -9,3 +9,11 @@ body{
 body {
     overflow: hidden;
 }
+
+
+div.line {
+    width: 100%;
+    height: 5px;
+    background-color: black;
+    border-radius: 25px;
+}

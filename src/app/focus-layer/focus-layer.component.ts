@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Term } from '../term';
 import { TermServiceService} from '../term-service.service';
-import { faArrowRight, faEdit, faEye } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faEdit, faEye, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
 import { EventEmitter } from 'protractor';
 import { cpuUsage } from 'process';
@@ -18,8 +18,11 @@ export class FocusLayerComponent implements OnInit {
   faArrowRight = faArrowRight;
   faEdit = faEdit;
   faEye = faEye;
+  faArrowDown = faArrowDown;
+  resumeArrow = faArrowRight;
   // states
   inPreview = true;
+  resVisible = false;
 
   constructor(public termService:TermServiceService) { }
 
@@ -54,4 +57,15 @@ export class FocusLayerComponent implements OnInit {
   saveDescription(term:Term){
     this.termService.updateTerm(term).subscribe(()=>console.log);
   }
+
+  toggleResume() {
+    if(this.resVisible) { // then hide
+      this.resumeArrow = faArrowRight;
+    }
+    else {  // then show
+      this.resumeArrow = faArrowDown;
+    }
+    this.resVisible = !this.resVisible;
+  }
+  
 }

@@ -2,6 +2,7 @@
     <div class="inner" (click)="$event.stopPropagation()">
         <div class="content">
             <h2 >{{term.term | uppercase}}</h2>
+            <!-- <div class="line"></div> -->
             <!-- <div class="description"><p>{{term.desc}}</p></div>
             <h4 class="sub-title">Links</h4>
             <div class="links">
@@ -10,6 +11,15 @@
                     <div class="link"><p><a href="{{link.value}}" target="_blank" >{{link.alias}}</a></p></div>
                 </div>
             </div> -->
+            <div class="resume-holder">
+                <div class="resume-toggler" >
+                    <h2>Resume</h2>
+                    <fa-icon [icon]="resumeArrow" (click)="toggleResume()"></fa-icon>
+                </div>
+                <div [hidden]="!resVisible" class="resume">
+                    <p>{{term.resume}}</p>
+                </div>
+            </div>
             <div id="markdown" [class]="!inPreview?'visible':'hidden'">
                 <!-- <h2>Markdown</h2> -->
                 <textarea id="mark-area" #mark [ngModel]="this.termService.markdown"></textarea>

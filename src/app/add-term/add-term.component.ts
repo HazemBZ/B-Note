@@ -17,11 +17,12 @@ export class AddTermComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  add(term_val:string, description:string, tags:string[], categories:string[]) {
+  add(term_val:string, res:string, description:string, tags:string[], categories:string[]) {
     const term = term_val;
+    const resume = res;
     const desc = description;
     const tag = tags;
-    this.termService.addTerm({"term":term, "desc":desc, "tags":tag, "categories":categories} as Term).subscribe((resp)=> console.log(resp));
+    this.termService.addTerm({"term":term, "resume":resume, "desc":desc, "tags":tag, "categories":categories} as Term).subscribe((resp)=> console.log(resp));
   }
 
 

@@ -96,3 +96,22 @@ div.link p {
     padding: 5px;
     border: 2px solid black;
 }
+
+div.resume-holder {
+    margin-bottom: 25px;
+}
+
+.resume-toggler fa-icon {
+    font-size: 20px;
+    position: relative;
+    left: 20px;
+}
+
+.resume-toggler h2 {
+    display: inline-block;
+    margin-top: 0;
+}
+
+.resume p {
+    margin-left: 15px;
+}

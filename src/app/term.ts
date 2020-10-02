@@ -9,5 +9,6 @@ export interface Term {
     desc:string
     tags:string[]
     links:link[]
-    categories: string[]
+    categories: string[],
+    resume:string
 }
