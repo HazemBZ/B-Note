@@ -40,6 +40,8 @@ export class FocusLayerComponent implements OnInit {
     document.getElementsByTagName("html")[0].style.overflow = "";
     // alert("hidden");
     this.inPreview = true;
+    this.resVisible = false;
+    this.resumeArrow = faArrowRight;
     
   }
 
