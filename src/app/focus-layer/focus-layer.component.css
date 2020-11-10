@@ -35,7 +35,7 @@ div.inner {
     position: fixed;
   
     margin: 5%;
-    padding-bottom: 0;
+    padding-bottom: 30px;
     
 }
 /* VERY IMPORTANT 
@@ -45,9 +45,16 @@ div.content {
     width: 90%;
     height: 90%;
     margin: 3% 5%;
+    padding-right: 20px;
     overflow: scroll;
+    overflow-x: hidden;
     margin-bottom: 0;
 }
+
+#overview {
+    word-wrap: break-word;
+}
+
 div.links {
     display: flex;
     flex-direction: row;
@@ -69,9 +76,10 @@ div.link p {
 
 .toggler-holder {
     position: absolute;
-    bottom: 2px;
+    bottom: 0px;
     width: 100%;
     font-size: 30px;
+    height: 40px; /* trial and error to place icon in a good position */
 }
 
 #toggler {

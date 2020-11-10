@@ -109,6 +109,7 @@ label {
     /* border: 5px dotted red; */
     
     overflow: scroll;
+    overflow-x: hidden;
 }
 
 
