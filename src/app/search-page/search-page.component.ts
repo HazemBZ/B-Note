@@ -3,7 +3,7 @@ import { TermServiceService } from '../term-service.service';
 import { Term } from '../term';
 import { filter, map, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Observable, Subject, of } from 'rxjs';
-import { faCoffee , faTrashAlt ,faSearch, faPen, faArrowRight, faArrowDown, faArrowUp } 
+import { faCoffee , faTrashAlt ,faSearch, faPen, faArrowRight, faArrowDown, faArrowUp }
         from "@fortawesome/free-solid-svg-icons";
 
 @Component({
@@ -17,7 +17,7 @@ export class SearchPageComponent implements OnInit ,AfterViewInit{
   terms:Term[]= [];
   private searchTerms = new Subject<string>();
   popTerm:Term;
-  
+
   categoriesFilter = []
   selectedCategories = []
   allCateg = null;
@@ -45,7 +45,7 @@ export class SearchPageComponent implements OnInit ,AfterViewInit{
   ]
 
   constructor(public termService:TermServiceService) {
-    
+
    }
 
 
@@ -57,18 +57,18 @@ export class SearchPageComponent implements OnInit ,AfterViewInit{
       switchMap((term:string)=> of((this.terms.filter((elem)=> elem.term.toLocaleLowerCase().includes(term.toLocaleLowerCase())))))
     );
     this.async_terms.subscribe((terms)=>{this.termService.filteredTerms = terms; console.log(`recieved ${JSON.stringify(terms)}`);});
-      
+
   }
 
   ngAfterViewInit(){
     let el = document.getElementById('all').click();
-  }  
+  }
 
   async_init(){
     let el = document.getElementById('all');
     console.log(el);
     el.click();
-    
+
   }
 
   filter(text){
@@ -83,6 +83,7 @@ export class SearchPageComponent implements OnInit ,AfterViewInit{
 
   delete(term_id:string, current_term:string) {
     this.termService.filteredTerms = this.terms.filter((term)=>term._id !== term_id);
+    this.terms = this.termService.filteredTerms;
     console.log(`after deletetion=> ${JSON.stringify(this.terms)}`);
     this.termService.deleteTerm(term_id).subscribe((resp)=>console.log(JSON.stringify(resp)));
   }
@@ -97,34 +98,34 @@ export class SearchPageComponent implements OnInit ,AfterViewInit{
 
     this.catIsUp = ! this.catIsUp;
   }
-  
+
   showTermPop(index,event){
-    
+
     console.log(document.getElementsByTagName("html")[0].style.overflow);
     this.popTerm= this.termService.filteredTerms[index];
     let target = event.target;
     console.log("showing indexed",index,"term",target);
- 
+
     this.termService.lastHighlightTerm = target;
     let pop = document.getElementById("termPop");
     pop.style.display = "block";
     document.getElementsByTagName("html")[0].style.overflow = "hidden";
-    
+
     this.updateMarkdown(this.popTerm.desc);
     this.termService.updateParsedMardown(this.popTerm.desc);
-    this.termService.focusedTermIndex = index;   
-    
+    this.termService.focusedTermIndex = index;
+
   }
 
   searchByCategory(categ, evt) {
-    let element = evt.target;    
+    let element = evt.target;
     console.log('element', element)
     console.log(`clicked category:,${categ}`);
     if(categ == "ALL" ) {
       if (!this.allCategSelected) {
 
         this.categoriesFilter = [];
-        
+
         this.termService.getTermsByCategories([]).subscribe(
             (res)=> {console.log(`search result:`,res);this.terms = this.termService.filteredTerms = res}
           );
@@ -135,25 +136,25 @@ export class SearchPageComponent implements OnInit ,AfterViewInit{
           this.selectedCategories.forEach((elem)=> {this.unselectCategory(elem,'stub');this.selectedCategories = []});
         }
         if(!this.allCateg) this.allCateg = element;
-        
+
       } else {
         return;
         this.unselectCategory(this.allCateg,'ALL');
       }
       return
       }
-     
+
     if(this.allCategSelected) {
       this.allCategSelected = false;
       this.unselectCategory(this.allCateg,"ALL");
-      
-      
+
+
     }
     if(!this.categoriesFilter.includes(categ)) {
       this.categoriesFilter.push(categ);
       this.selectCategory(element,categ);
       this.selectedCategories.push(element);
-      
+
     }
     else {
       this.categoriesFilter = this.categoriesFilter.filter((el)=>el!=categ); // slow opr
@@ -164,7 +165,7 @@ export class SearchPageComponent implements OnInit ,AfterViewInit{
 
     console.log(`searching by categories`,this.categoriesFilter);
     if(this.categoriesFilter.length == 0)return;
-    
+
     else {
     this.termService.getTermsByCategories(this.categoriesFilter).subscribe((res)=> {console.log(`search result:`,res);this.terms = this.termService.filteredTerms = res});
     }
@@ -181,9 +182,9 @@ export class SearchPageComponent implements OnInit ,AfterViewInit{
     let cont = element.attributes['class'].textContent;
     element.attributes['class'].textContent = cont.replace('idle', 'selected');
   }
-  
+
   updateMarkdown(markdown) {
     this.termService.markdown = markdown;
   }
-  
+
 }

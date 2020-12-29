@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { TermServiceService } from '../term-service.service';
 import { Term } from '../term';
 import { faSave } from '@fortawesome/free-solid-svg-icons';
@@ -7,23 +8,37 @@ import { faSave } from '@fortawesome/free-solid-svg-icons';
   selector: 'app-add-term',
   templateUrl: './add-term.component.html',
   styleUrls: ['./add-term.component.css'],
-  host: {'class': 'add tile is-11'}
+  host: { class: 'add tile is-11' },
 })
 export class AddTermComponent implements OnInit {
-  term:Term;
+  term: Term;
   faSave = faSave;
-  constructor(private termService:TermServiceService) { }
+  constructor(
+    private termService: TermServiceService,
+    private location: Location
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  add(term_val:string, res:string, description:string, tags:string[], categories:string[]) {
+  add(
+    term_val: string,
+    res: string,
+    description: string,
+    tags: string[],
+    categories: string[]
+  ) {
     const term = term_val;
     const resume = res;
     const desc = description;
     const tag = tags;
-    this.termService.addTerm({"term":term, "resume":resume, "desc":desc, "tags":tag, "categories":categories} as Term).subscribe((resp)=> console.log(resp));
+    this.termService
+      .addTerm({
+        term: term,
+        resume: resume,
+        desc: desc,
+        tags: tag,
+        categories: categories,
+      } as Term)
+      .subscribe((resp) => {console.log(resp); this.location.back()});
   }
-
-
 }
