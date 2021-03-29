@@ -5,7 +5,7 @@ Run `npm install`
 
 ## Flask API
 
-Follow [this](https://github.com/HazemBZ/notes-app-flask-backend)
+Follow [this](https://github.com/HazemBZ/notes-app-flask-backend/tree/self_usage)
 
 ## Development server
 
