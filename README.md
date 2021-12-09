@@ -1,11 +1,12 @@
 # Note
 
 ## Install dependencies
-Run `npm install`
+Run `npm install && npm install -g @angular/cli`
 
-## Flask API
 
-Follow [this](https://github.com/HazemBZ/notes-app-flask-backend/tree/self_usage)
+## Backend
+
+Follow [this](https://github.com/HazemBZ/notes-app-flask-backend/tree/master)
 
 ## Development server
 
