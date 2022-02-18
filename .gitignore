@@ -53,3 +53,4 @@ src/assets
 public/*
 *.log
 *.sh
+*.cache
