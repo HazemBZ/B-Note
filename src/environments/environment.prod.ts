@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  api_ip:"0.0.0.0",
-  api_port:"8000"
+  api_ip:"ancient-falls-68822.herokuapp.com",
+  api_port:"80"
 };

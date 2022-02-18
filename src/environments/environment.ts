@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  api_ip:"localhost",
-  api_port:"8000"
+  api_ip:"ancient-falls-68822.herokuapp.com",
+  api_port:"80"
 };
 
 /*
