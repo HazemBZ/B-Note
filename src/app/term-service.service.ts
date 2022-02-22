@@ -9,8 +9,10 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class TermServiceService {
-  private base:string = `http://${environment.api_ip}:${environment.api_port}`; 
+  private port = environment.api_port?environment.api_port:'';
+  private base:string = `https://${environment.api_ip}${this.port!==''?":"+this.port:''}`; 
   private termsUrl:string = `${this.base}/terms`;
+
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': "application/json"
@@ -63,21 +65,22 @@ export class TermServiceService {
   }
 
   deleteTerm(term_id:string):Observable<any> {
-    const url = `http://${environment.api_ip}:${environment.api_port}/term/delete/${term_id}`;
-    return this.http.delete<any>(url, this.httpOptions).pipe(
+    const url = `${this.base}/term/delete/${term_id}`;
+    console.log(`DELETE ${url}`)
+    return this.http.delete<any>(url).pipe(
       tap(_=>console.log(JSON.stringify(_)))
     );
   }
   
   updateTerm(term:Term):Observable<any> {
     const url = "";
-    return this.http.patch<any>(`http://${environment.api_ip}:${environment.api_port}/term/patch`, term,this.httpOptions).pipe(
+    return this.http.patch<any>(`${this.base}/term/patch`, term,this.httpOptions).pipe(
       tap(_=> console.log("received " + JSON.stringify(_)))
     );
   }
 
   parseMarkdown(markdown:string):Observable<any> {
-    const url = `http://${environment.api_ip}:${environment.api_port}/markdown/html`;
+    const url = `${this.base}/markdown/html`;
     return this.http.post<any>(url, [markdown], this.httpOptions).pipe(
       tap(_=> console.log("received " + JSON.stringify(_)))
     );

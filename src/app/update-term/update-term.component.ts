@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Term } from '../term';
 import { TermServiceService } from '../term-service.service';
@@ -37,6 +37,7 @@ export class UpdateTermComponent implements OnInit {
     private location:Location,
     private termService:TermServiceService,
     private componentFactoryResolver: ComponentFactoryResolver,
+    private router:Router
     ) { }
 
   ngOnInit(): void {
@@ -82,7 +83,8 @@ export class UpdateTermComponent implements OnInit {
    
 
   goBack():void {
-    this.location.back();
+    console.log('going back')
+    this.router.navigate(['search'])
   }
 
   getTerm(id:string):void {
@@ -116,7 +118,11 @@ export class UpdateTermComponent implements OnInit {
     console.log("finished splicing ", tags);
     this.term.tags = tags;
     console.log("UPDATE DATA", this.term);
-    this.termService.updateTerm(this.term).subscribe((res)=>{console.log("receiving"+JSON.stringify(res));this.goBack()});
+    this.termService.updateTerm(this.term).subscribe(
+      (res)=>{
+        console.log("receiving"+JSON.stringify(res));
+        this.goBack()
+      });
   }
 
 

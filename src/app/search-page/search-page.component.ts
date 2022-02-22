@@ -82,10 +82,10 @@ export class SearchPageComponent implements OnInit ,AfterViewInit{
   }
 
   delete(term_id:string, current_term:string) {
+    this.termService.deleteTerm(term_id).subscribe((resp)=>{console.log(`deleted ${JSON.stringify(resp)}`)});
     this.termService.filteredTerms = this.terms.filter((term)=>term._id !== term_id);
     this.terms = this.termService.filteredTerms;
     console.log(`after deletetion=> ${JSON.stringify(this.terms)}`);
-    this.termService.deleteTerm(term_id).subscribe((resp)=>console.log(JSON.stringify(resp)));
   }
 
   toggleCategories(){
