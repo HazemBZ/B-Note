@@ -121,8 +121,8 @@ export class UpdateTermComponent implements OnInit {
     this.termService.updateTerm(this.term).subscribe(
       (res)=>{
         console.log("receiving"+JSON.stringify(res));
-        this.goBack()
       });
+      this.goBack()
   }
 
 
