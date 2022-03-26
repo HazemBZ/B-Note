@@ -17,6 +17,7 @@ export class SearchPageComponent implements OnInit ,AfterViewInit{
   terms:Term[]= [];
   private searchTerms = new Subject<string>();
   popTerm:Term;
+  loading = true;
 
   categoriesFilter = []
   selectedCategories = []
@@ -56,7 +57,7 @@ export class SearchPageComponent implements OnInit ,AfterViewInit{
       distinctUntilChanged(),
       switchMap((term:string)=> of((this.terms.filter((elem)=> elem.term.toLocaleLowerCase().includes(term.toLocaleLowerCase())))))
     );
-    this.async_terms.subscribe((terms)=>{this.termService.filteredTerms = terms; console.log(`recieved ${JSON.stringify(terms)}`);});
+    this.async_terms.subscribe((terms)=>{this.termService.filteredTerms = terms;this.loading = false; console.log(`recieved ${JSON.stringify(terms)}`);});
 
   }
 

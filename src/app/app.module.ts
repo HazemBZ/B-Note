@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,8 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { TagComponent } from './tag/tag.component';
 import { TagDirective } from './tag.directive';
 import { FocusLayerComponent } from './focus-layer/focus-layer.component';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { LoadingInterceptor } from './loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { FocusLayerComponent } from './focus-layer/focus-layer.component';
     TagComponent,
     TagDirective,
     FocusLayerComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,11 @@ import { FocusLayerComponent } from './focus-layer/focus-layer.component';
     FormsModule,
     FontAwesomeModule // => ngModel  data binding 
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
