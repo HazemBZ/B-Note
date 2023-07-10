@@ -1,6 +1,6 @@
 # Note
 ## What you get !!
-### Home page
+### (free) Home page
 <p align="center" >
     <img src="documentation/home-page.png" width="600"/>
 </p>
@@ -11,21 +11,21 @@ Features:
  - Categories
  - Tagging
 
-### Edit mode 
+### (free💸) Edit mode 
 <p align="center">
     <img src="documentation/edit-mode.png">
 </p>
 
 Create rich notes using `markdown`
 
-### View mode 
+### (free💸) View mode 
 <p align="center">
     <img src="documentation/view-mode.png">
 </p>
 
 Preview your beautiful notes with a simple click 🖱️
 
-### Update page
+### (free💸) Update page
 <p align="center">
     <img src="documentation/update-note.png">
 </p>
